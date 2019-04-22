@@ -16,7 +16,6 @@ function randomIntFromInterval(min, max) // min and max included
 
 ///
 function set_word(){
-    console.log("set_word()")
     var random_word_index = randomIntFromInterval(0, guess_array.length - 1)
 
     new_word = new word(guess_array[random_word_index]);
@@ -66,7 +65,7 @@ function prompt_user_for_letter() {
             name: "guess_letter_name"
         }
     ]).then(function (res) {
-        console.log(res.guess_letter_name)
+        // console.log(res.guess_letter_name)
         check_letter(res.guess_letter_name)
         check_guess_count()
     });
@@ -114,7 +113,7 @@ function prompt_newgame_question(){
 
 function check_letter(a) {
     if (new_word.word.toLowerCase().indexOf(a) > -1) {
-        console.log("in the word");
+        console.log(a, " is in the word(s)");
         for (i = 0; i < new_word.word.length; i++) {
             if (new_word.arr_of_letter_obj[i].str_val.toLowerCase() == a) {
                 new_word.arr_of_letter_obj[i].been_guessed = true;
@@ -122,7 +121,7 @@ function check_letter(a) {
         }
 
     } else {
-        console.log("not in the word")
+        console.log(a," not in the word(s)")
         guesses--;
         // console.log("Guesses Left: ",guesses)
     }
